@@ -4,6 +4,7 @@ from functools import wraps
 
 def cache(func: Callable) -> Callable:
     storage: dict[tuple[Any, ...], Any] = {}
+
     @wraps(func)
     def wrapper(*args: Any, **kwargs: Any) -> Any:
         key = (*args, tuple(sorted(kwargs.items())))
